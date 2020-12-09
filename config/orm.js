@@ -8,7 +8,7 @@ var orm = {
             console.log(result);
         });
     },
-    selectOne: function (tableInput, colToSearch, valOfCol) {
+    selectONE: function (tableInput, colToSearch, valOfCol) {
         var queryString = "SELECT * FROM ?? WHERE ?? = ?";
 
         console.log(queryString);
@@ -18,7 +18,7 @@ var orm = {
             console.log(result);
         });
     },
-    leftJoin: function (whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol) {
+    updateOne: function (whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol) {
         var queryString = "SELECT ?? FROM ?? AS tOne";
         queryString += " LEFT JOIN ?? AS tTwo";
         queryString += " ON tOne.?? = tTwo.??";
