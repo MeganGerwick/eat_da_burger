@@ -8,7 +8,7 @@ var orm = {
             console.log(result);
         });
     },
-    selectWhere: function (tableInput, colToSearch, valOfCol) {
+    selectOne: function (tableInput, colToSearch, valOfCol) {
         var queryString = "SELECT * FROM ?? WHERE ?? = ?";
 
         console.log(queryString);
