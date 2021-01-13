@@ -1,0 +1,52 @@
+
+<div class="container red lighten-5">
+    <div class="row">
+        <div class="col s12 center-align">
+            <h1 class="red-text text-darken-4 center-align">Eat-Da-Burger</h1>
+            <img class="responsive-img " src="./images/burger2.png" alt="Burger Image">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6">
+            <h4 class="col-title center-align">Available Burgers</h4>
+            {{!-- <table> --}}
+                <ol>
+                        {{#each burger_name}}
+                            {{#unless devoured}}
+                               <li>
+                                    <a class="waves-effect red darken-4 waves-light btn devour" id="devour-burger" data-id="{{id}}" data-devoured="{{devoured}}">
+                                    Devour It!</a>
+                                {{burger_name}}                              
+                               
+                                <p></p>
+                             </li>
+                            {{/unless}}
+                        {{/each}}                  
+                <ol>
+           {{!-- </table> --}}
+        </div>
+         <div class="col s5">
+            <h4 class="col-title center-align">Burgers You Have Eaten</h4>
+            <ul>
+                {{#each burger_name}}
+                    {{#if devoured}}
+                    <li class="list-item">
+                         {{burger_name}}
+                    </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4 offset-s4 center-align" id="addburger">
+           <input placeholder="Burger Name" id="burger_name" type="text" class="center-align validate">
+                <a class=" submit-btn waves-effect red darken-4 waves-light btn" type="submit">Add Burger</a>
+            </form>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+</div>
