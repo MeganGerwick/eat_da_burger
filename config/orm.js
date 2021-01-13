@@ -33,31 +33,35 @@ function printQuestionMarks(num) {
 }
 
 var orm = {
-    selectALL: function (whatToSelect, tableInput) {
-        var queryString = "SELECT ?? FROM ??";
-        connection.query(queryString, [whatToSelect, tableInput], function (err, result) {
-            if (err) throw err;
-            console.log(result);
+    selectALL: function (whatToSelect, cb) {
+        var queryString = "SELECT * FROM " + whatToSelect + ";";
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+            cb(result);
         });
     },
-    insertONE: function (newBurger) {
-        var queryString = "INSERT INTO burgers";
+    insertONE: function (tableName, newBurger, vals, cb) {
+        var queryString = "INSERT INTO " + tableName;
         queryString += " (";
         queryString += newBurger.toString();
         queryString += ")";
         queryString += "VALUES (";
-        queryString += printQuestionMarks(newBurger.length);
+        queryString += printQuestionMarks(vals.length);
         queryString += ")";
 
 
         console.log(queryString);
 
-        connection.query(queryString, [newBurger], function (err, result) {
-            if (err) throw err;
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
             cb(result);
         });
     },
-    updateOne: function (table, objColVas, condition, cb) {
+    updateONE: function (table, objColVas, condition, cb) {
         var queryString = "UPDATE " + table;
         queryString += " SET ";
         queryString += objToSql(objColVas);
