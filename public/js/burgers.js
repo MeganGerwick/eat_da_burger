@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     //create a new burger
-    $(".create-form").on("submit", (event) => {
+    $(".submit-btn").on("click", (event) => {
         event.preventDefault();
         console.log("button pressed");
         const burger_name = $('#burger_name').val().trim();
@@ -9,7 +9,6 @@ $(document).ready(() => {
 
         const newBurger = {
             burger_name: $('#burger_name').val().trim(),
-            devoured: 0,
         };
         //Send post request
         $.ajax("/api/burger", {
@@ -21,6 +20,7 @@ $(document).ready(() => {
                 location.reload();
             }
         );
+        $(this).val('');
     });
 
 
