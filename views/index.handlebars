@@ -28,11 +28,12 @@
         </div>
          <div class="col s5">
             <h4 class="col-title center-align">Burgers You Have Eaten</h4>
-            <ul>
+            <ul class="center-align">
                 {{#each burger_name}}
                     {{#if devoured}}
                     <li class="list-item">
                          {{burger_name}}
+                         <p></p>
                     </li>
                     {{/if}}
                 {{/each}}
