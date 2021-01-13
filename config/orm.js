@@ -50,11 +50,11 @@ var orm = {
         queryString += "VALUES (";
         queryString += printQuestionMarks(vals.length);
         queryString += ")";
-
+        console.log("newBurger", newBurger);
 
         console.log(queryString);
 
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -67,10 +67,11 @@ var orm = {
         queryString += objToSql(objColVas);
         queryString += " WHERE "
         queryString += condition;
+        console.log("condition:", condition);
 
         console.log(queryString);
 
-        connection.query(queryString, function (err, result
+        connection.query(queryString, condition, function (err, result
         ) {
             if (err) throw err;
             cb(result);

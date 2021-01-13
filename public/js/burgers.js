@@ -10,8 +10,9 @@ $(document).ready(() => {
         const newBurger = {
             burger_name: $('#burger_name').val().trim(),
         };
+        console.log("burger_name:", burger_name)
         //Send post request
-        $.ajax("/api/burger", {
+        $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
         }).then(
@@ -20,21 +21,22 @@ $(document).ready(() => {
                 location.reload();
             }
         );
-        $(this).val('');
+        $('#burger_name').val('');
     });
 
 
     $(function () {
         //Devour button
-        $("#devour-burger").on("click", function (event) {
+        $(".devour").on("click", function (event) {
             event.preventDefault();
+            console.log("devour button pressed");
 
             const id = $(this).data("id");
             console.log(id);
 
-            $.ajax("/api/burger" + id, {
+            $.ajax("/api/burgers/" + id, {
                 type: "PUT",
-                data: { devoured: 1 }
+                data: { devoured: true }
             }).then(
                 function () {
                     location.reload();
